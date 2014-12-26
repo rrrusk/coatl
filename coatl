@@ -1,0 +1,17 @@
+#!/usr/bin/env ruby
+#!ruby -Ku
+# encoding utf-8
+
+$:.unshift(File.dirname(File.expand_path(__FILE__)) + '/lib')
+require "coatl"
+
+path = File.dirname(ARGV[0]) + "/.."
+filename = File.basename(ARGV[0],'.coa')
+file = open(ARGV[0])
+source = file.read
+file.close
+
+coatl = Coatl.new()
+converted = coatl.exec(source,path)
+
+puts converted
